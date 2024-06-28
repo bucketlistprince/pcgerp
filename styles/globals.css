@@ -191,5 +191,16 @@ body {
   color: #68d391; /* Tailwind green-400 */
   font-weight: bold; /* Make the font bold */
 }
+.dark {
+  background-color: #1a202c; /* Dark background color */
+  color: #e2e8f0; /* Light text color */
+}
 
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: #2d3748; /* Dark input background color */
+  color: #e2e8f0; /* Light text color */
+  border-color: #4a5568; /* Dark border color */
+}
 

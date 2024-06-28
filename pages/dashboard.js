@@ -47,9 +47,10 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md mt-4">
-          <BirthdayCalendar birthdays={upcomingBirthdays} />
+        <div className=" rounded-lg shadow-md mt-4">
+        {/* <BirthdayCalendar birthdays={upcomingBirthdays} /> */}
         </div>
+        <BirthdayCalendar birthdays={upcomingBirthdays} />
       </div>
     </Layout>
   );

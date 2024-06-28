@@ -29,7 +29,7 @@ const BirthdayCalendar = ({ birthdays }) => {
         onChange={setDate}
         value={date}
         tileContent={tileContent}
-        className="w-full max-w-lg bg-white shadow-md p-4 rounded-lg"
+        className="w-full max-w-lg shadow-md p-4 rounded-lg"
       />
     </div>
   );

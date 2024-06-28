@@ -211,7 +211,7 @@ const Tithe = () => {
       <table className="w-full border-collapse border border-gray-300 bg-gray-100">
         <thead>
           <tr className="bg-gray-200">
-            <th className="py-2 px-2 text-sm text-left">ID</th>
+            <th className="py-2 px-2 text-sm text-left"></th>
             <th className="py-2 px-2 text-sm text-left">Name</th>
             <th className="py-2 px-2 text-sm text-right">Amount (GHC)</th>
             <th className="py-2 px-2 text-sm text-left">Date</th>
@@ -234,7 +234,7 @@ const Tithe = () => {
                   setSelectedRow(entry);
                 }}
               >
-                <td className="py-1 px-2">{entry.titherId}</td>
+                <td className="py-1 px-1 text-gray-400 text-sm">{indexOfFirstTithe + index + 1}</td>
                 <td className="py-1 px-2">{entry.titherName}</td>
                 <td className="py-1 px-2 flex justify-end">{entry.amount}</td>
                 <td className="py-1 px-2">{entry.date}</td>

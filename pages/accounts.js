@@ -5,7 +5,7 @@ import AccountTabs from "../components/AccountTabs";
 import Offertory from "../components/accountContents/Offertory";
 import Tithe from "../components/accountContents/Tithe";
 import Welfare from "../components/accountContents/Welfare";
-import Donations from "../components/accountContents/Donations";
+import Donations from "../components/accountContents/Donation";
 import Others from "../components/accountContents/Others";
 
 const Accounts = () => {

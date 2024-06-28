@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { FaEdit, FaTrash, FaSearch } from "react-icons/fa"; // Import the required icons
-import AddOffertoryModal from "../modals/AddOffertoryModal";
+import AddDonationModal from "../modals/AddDonationModal";
 
-const Offertory = () => {
-  const [offertoryData, setOffertoryData] = useState([
-    { date: "2024-06-01", amount: 1000, comment: "First offertory" },
-    { date: "2024-06-08", amount: 2010, comment: "Second offertory" },
-    { date: "2024-06-15", amount: 1510, comment: "Third offertory" },
-    { date: "2024-06-22", amount: 2510, comment: "Fourth offertory" },
-    { date: "2024-06-29", amount: 3100, comment: "Fifth offertory" },
+const Donation = () => {
+  const [donationData, setDonationData] = useState([
+    { date: "2024-06-01", amount: 500, comment: "First donation", donorName: "John Doe" },
+    { date: "2024-06-08", amount: 1200, comment: "Second donation", donorName: "Jane Smith" },
+    { date: "2024-06-15", amount: 800, comment: "Third donation", donorName: "Alice Johnson" },
+    { date: "2024-06-22", amount: 1500, comment: "Fourth donation", donorName: "Bob Brown" },
+    { date: "2024-06-29", amount: 2000, comment: "Fifth donation", donorName: "Charlie Davis" },
   ]);
   const [showForm, setShowForm] = useState(false);
   const [date, setDate] = useState("");
-  const [offertoryAmount, setOffertoryAmount] = useState("");
+  const [donationAmount, setDonationAmount] = useState("");
   const [comment, setComment] = useState("");
+  const [donorName, setDonorName] = useState("");
+  const [donorId, setDonorId] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [offertoriesPerPage, setOffertoriesPerPage] = useState(10);
+  const [donationsPerPage, setDonationsPerPage] = useState(10);
   const [selectedRow, setSelectedRow] = useState(null);
   const [latestEntryIndex, setLatestEntryIndex] = useState(null);
   const [highlightLatest, setHighlightLatest] = useState(false);
@@ -27,17 +29,21 @@ const Offertory = () => {
 
     const newEntry = {
       date,
-      amount: parseInt(offertoryAmount),
-      comment: comment,
+      amount: parseInt(donationAmount),
+      comment,
+      donorName,
+      donorId,
     };
 
-    setOffertoryData([newEntry, ...offertoryData]);
+    setDonationData([newEntry, ...donationData]);
     setLatestEntryIndex(0);
     setHighlightLatest(true);
 
     setDate("");
-    setOffertoryAmount("");
+    setDonationAmount("");
     setComment("");
+    setDonorName("");
+    setDonorId("");
     setShowForm(false);
   };
 
@@ -51,17 +57,17 @@ const Offertory = () => {
     }
   }, [highlightLatest]);
 
-  const indexOfLastOffertory = currentPage * offertoriesPerPage;
-  const indexOfFirstOffertory = indexOfLastOffertory - offertoriesPerPage;
-  const currentOffertories = offertoryData.slice(
-    indexOfFirstOffertory,
-    indexOfLastOffertory
+  const indexOfLastDonation = currentPage * donationsPerPage;
+  const indexOfFirstDonation = indexOfLastDonation - donationsPerPage;
+  const currentDonations = donationData.slice(
+    indexOfFirstDonation,
+    indexOfLastDonation
   );
 
   const pageNumbers = [];
   for (
     let i = 1;
-    i <= Math.ceil(offertoryData.length / offertoriesPerPage);
+    i <= Math.ceil(donationData.length / donationsPerPage);
     i++
   ) {
     pageNumbers.push(i);
@@ -70,27 +76,31 @@ const Offertory = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const handleItemsPerPageChange = (value) => {
-    setOffertoriesPerPage(value);
+    setDonationsPerPage(value);
     setCurrentPage(1);
   };
 
-  const filteredOffertories = offertoryData.filter((entry) =>
+  const filteredDonations = donationData.filter((entry) =>
     entry.comment.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
     <div className="bg-white">
       <div className="mb-4">
-        <AddOffertoryModal
+        <AddDonationModal
           isOpen={showForm}
           onClose={() => setShowForm(false)}
           onSubmit={handleSubmit}
           date={date}
           setDate={setDate}
-          offertoryAmount={offertoryAmount}
-          setOffertoryAmount={setOffertoryAmount}
+          donationAmount={donationAmount}
+          setDonationAmount={setDonationAmount}
           comment={comment}
           setComment={setComment}
+          donorName={donorName}
+          setDonorName={setDonorName}
+          donorId={donorId}
+          setDonorId={setDonorId}
         />
 
         <div className="flex justify-between items-center">
@@ -99,7 +109,7 @@ const Offertory = () => {
               onClick={() => setShowForm(true)}
               className="text-sm hover:bg-green-300 bg-gray-300 font-semibold text-black py-1 px-4 rounded mr-4"
             >
-              Add Offertory
+              Add Donation
             </button>
             <button
               onClick={() => setShowSearch(!showSearch)}
@@ -112,7 +122,7 @@ const Offertory = () => {
             <div className="flex items-center mr-4">
               <span className="mr-2 text-sm">Items per page:</span>
               <select
-                value={offertoriesPerPage}
+                value={donationsPerPage}
                 onChange={(e) =>
                   handleItemsPerPageChange(parseInt(e.target.value))
                 }
@@ -160,7 +170,7 @@ const Offertory = () => {
           </div>
         </div>
         {showSearch && (
-          <div className=" mt-2">
+          <div className="mt-2">
             <input
               type="text"
               value={searchQuery}
@@ -175,6 +185,7 @@ const Offertory = () => {
         <thead>
           <tr className="bg-gray-200">
             <th className="py-2 px-1 text-sm text-left"></th>
+            <th className="py-2 px-2 text-sm text-left">Donor Name</th>
             <th className="py-2 px-2 text-sm text-left">Comment</th>
             <th className="py-2 px-2 text-sm text-right">Amount (GHC)</th>
             <th className="py-2 px-2 text-sm text-left">Date</th>
@@ -182,8 +193,8 @@ const Offertory = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredOffertories
-            .slice(indexOfFirstOffertory, indexOfLastOffertory)
+          {filteredDonations
+            .slice(indexOfFirstDonation, indexOfLastDonation)
             .map((entry, index) => (
               <React.Fragment key={index}>
                 <tr
@@ -200,8 +211,9 @@ const Offertory = () => {
                   }}
                 >
                   <td className="py-1 px-1 text-gray-400 text-sm">
-                    {indexOfFirstOffertory + index + 1}
+                    {indexOfFirstDonation + index + 1}
                   </td>
+                  <td className="py-1 px-2">{entry.donorName}</td>
                   <td className="py-1 px-2">{entry.comment}</td>
                   <td className="py-1 px-2 flex justify-end">{entry.amount}</td>
                   <td className="py-1 px-2">{entry.date}</td>
@@ -209,8 +221,10 @@ const Offertory = () => {
                     <button
                       onClick={() => {
                         setDate(entry.date);
-                        setOffertoryAmount(entry.amount.toString());
+                        setDonationAmount(entry.amount.toString());
                         setComment(entry.comment);
+                        setDonorName(entry.donorName);
+                        setDonorId(entry.donorId);
                         setShowForm(true);
                       }}
                       className="bg-transparent hover:bg-gray-100 text-gray-500 hover:text-gray-700 px-2 rounded"
@@ -219,12 +233,12 @@ const Offertory = () => {
                     </button>
                     <button
                       onClick={() => {
-                        const updatedOffertories = [...offertoryData];
-                        updatedOffertories.splice(
-                          indexOfFirstOffertory + index,
+                        const updatedDonations = [...donationData];
+                        updatedDonations.splice(
+                          indexOfFirstDonation + index,
                           1
                         );
-                        setOffertoryData(updatedOffertories);
+                        setDonationData(updatedDonations);
                       }}
                       className="text-red-600 hover:text-red-800 ml-2"
                     >
@@ -240,4 +254,4 @@ const Offertory = () => {
   );
 };
 
-export default Offertory;
+export default Donation;

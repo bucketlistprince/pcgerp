@@ -1,17 +1,17 @@
 import React from "react";
 
-const AddWelfareModal = ({
+const AddDonationModal = ({
   isOpen,
   onClose,
   onSubmit,
   date,
   setDate,
-  contributorId,
-  setContributorId,
-  contributorName,
-  setContributorName,
-  welfareAmount,
-  setWelfareAmount,
+  donorId,
+  setDonorId,
+  donorName,
+  setDonorName,
+  donationAmount,
+  setDonationAmount,
   comment,
   setComment,
 }) => {
@@ -38,35 +38,35 @@ const AddWelfareModal = ({
               required
             />
           </div>
-          {/* Contributor ID input */}
+          {/* Donor ID input */}
           <div className="mb-4">
-            <label className="block text-sm font-semibold mb-2">Contributor ID</label>
+            <label className="block text-sm font-semibold mb-2">Donor ID</label>
             <input
               type="text"
-              value={contributorId}
-              onChange={(e) => setContributorId(e.target.value)}
+              value={donorId}
+              onChange={(e) => setDonorId(e.target.value)}
               className="w-full border rounded p-2"
               required
             />
           </div>
-          {/* Contributor Name input */}
+          {/* Donor name input */}
           <div className="mb-4">
-            <label className="block text-sm font-semibold mb-2">Contributor Name</label>
+            <label className="block text-sm font-semibold mb-2">Donor Name</label>
             <input
               type="text"
-              value={contributorName}
-              onChange={(e) => setContributorName(e.target.value)}
+              value={donorName}
+              onChange={(e) => setDonorName(e.target.value)}
               className="w-full border rounded p-2"
               required
             />
           </div>
-          {/* Welfare amount input */}
+          {/* Donation amount input */}
           <div className="mb-4">
-            <label className="block text-sm font-semibold mb-2">Welfare Amount (GHC)</label>
+            <label className="block text-sm font-semibold mb-2">Donation Amount (GHC)</label>
             <input
               type="number"
-              value={welfareAmount}
-              onChange={(e) => setWelfareAmount(e.target.value)}
+              value={donationAmount}
+              onChange={(e) => setDonationAmount(e.target.value)}
               className="w-full border rounded p-2"
               required
             />
@@ -95,4 +95,4 @@ const AddWelfareModal = ({
   );
 };
 
-export default AddWelfareModal;
+export default AddDonationModal;

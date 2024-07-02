@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
-import BirthdayCalendar from "../components/BirthdayCalendar";
+import BigCalendarComponent from "../components/BigCalendarComponent";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -14,13 +14,6 @@ const Dashboard = () => {
   return (
     <Layout>
       <div className="max-w-5xl mx-auto">
-        <div className="mb-4 flex justify-end">
-          <Link href="/login">
-            <button className="text-sm bg-green-500 hover:bg-gray-300 font-bold text-black py-1 px-4 rounded">
-              Log Out
-            </button>
-          </Link>
-        </div>
         <div className="flex justify-between">
           <div className="flex">
             <div
@@ -28,15 +21,15 @@ const Dashboard = () => {
               onClick={() => router.push("/members")}
             >
               <h2 className="text-sm font-semibold mb-2 text-gray-800">
-                Total Members
+                Week's Birthdays
               </h2>
-              <p className="text-2xl">265</p>
+              <p className="text-2xl">15</p>
             </div>
             <div className="bg-white p-2 rounded-lg shadow-md hover:bg-green-300 hover:font-bold mr-4">
               <h2 className="text-sm font-semibold mb-2 text-gray-800">
                 Today's Birthdays
               </h2>
-              <p className="text-2xl">0</p>
+              <p className="text-2xl">2</p>
             </div>
           </div>
           <div className="bg-white p-2 rounded-lg shadow-md hover:bg-green-300 hover:font-bold">
@@ -47,10 +40,9 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className=" rounded-lg shadow-md mt-4">
-        {/* <BirthdayCalendar birthdays={upcomingBirthdays} /> */}
+        <div className="rounded-lg shadow-md mt-4 bg-white w-full">
+          <BigCalendarComponent birthdays={upcomingBirthdays} />
         </div>
-        <BirthdayCalendar birthdays={upcomingBirthdays} />
       </div>
     </Layout>
   );

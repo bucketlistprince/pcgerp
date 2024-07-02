@@ -1,0 +1,39 @@
+/* components/BigCalendarComponent.module.css */
+
+.custom-calendar .rbc-calendar {
+    background-color: #f9f9f9; /* Light background color for the calendar */
+  }
+  
+  .custom-calendar .rbc-header {
+    background-color: #4a90e2; /* Header background color */
+    color: white; /* Header text color */
+    font-weight: bold; /* Make header text bold */
+  }
+  
+  .custom-calendar .rbc-day-bg {
+    background-color: #ffffff; /* Background color for day cells */
+  }
+  
+  .custom-calendar .rbc-day-bg:hover {
+    background-color: #f1f1f1; /* Light hover effect on day cells */
+  }
+  
+  .custom-calendar .rbc-event {
+    background-color: #ff6347; /* Event background color */
+    color: white; /* Event text color */
+    border-radius: 4px; /* Rounded corners for events */
+  }
+  
+  .custom-calendar .rbc-month-view {
+    border: 1px solid #e2e2e2; /* Border around the calendar */
+  }
+  
+  .custom-calendar .rbc-month-header {
+    font-weight: bold; /* Bold month header text */
+  }
+  
+  .custom-calendar .rbc-btn {
+    background-color: #4a90e2; /* Button background color */
+    color: white; /* Button text color */
+  }
+  

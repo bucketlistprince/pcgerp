@@ -31,12 +31,6 @@ const Accounts = () => {
   return (
     <Layout>
       <div className="max-w-5xl mx-auto">
-        <div className="mb-4 flex justify-end">
-        {/* <button className="text-sm hover:bg-green-300 bg-gray-300 font-semibold text-black py-1 px-4 rounded">
-            Receive Contribution
-          </button> */}
-        </div>
-
         <div className="flex mb-4">
           <div className="bg-white p-2 rounded-lg shadow-md hover:bg-green-300 hover:font-bold mr-4">
             <h2 className="text-sm font-semibold mb-2 text-gray-800">
@@ -45,9 +39,7 @@ const Accounts = () => {
             <p className="text-2xl">GH¢ 1203.50</p>
           </div>
           <div className="bg-white p-2 rounded-lg shadow-md hover:bg-green-300 hover:font-bold mr-4 ">
-            <h2 className="text-sm font-semibold mb-2 text-gray-800">
-              Tithe
-            </h2>
+            <h2 className="text-sm font-semibold mb-2 text-gray-800">Tithe</h2>
             <p className="text-2xl">GH¢ 7540.00</p>
           </div>
           <div className="bg-white p-2 rounded-lg shadow-md hover:bg-green-300 hover:font-bold">
@@ -62,7 +54,11 @@ const Accounts = () => {
             General Accounts
             <hr />
           </h1>
-          <AccountTabs tabs={tabs} initialTab="Offertory" renderContent={renderContent} />
+          <AccountTabs
+            tabs={tabs}
+            initialTab="Offertory"
+            renderContent={renderContent}
+          />
         </div>
       </div>
     </Layout>

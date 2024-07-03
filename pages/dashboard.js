@@ -17,18 +17,17 @@ const Dashboard = () => {
       <div className="max-w-5xl mx-auto">
         <div className="flex justify-between mb-4">
           <div className="flex flex-wrap gap-4">
-
             <div className="bg-white p-4 rounded-lg shadow-md hover:bg-green-300 hover:font-bold transition-all">
-              <h2 className="text-sm font-semibold mb-2 text-gray-800">
-                Today's Birthdays
+              <h2 className="text-sm mb-2 text-gray-800">
+                Today&apos;s Birthdays
               </h2>
-              <p className="text-2xl">0</p>
+              <p className="text-3xl">0</p>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-md hover:bg-green-300 hover:font-bold transition-all">
-              <h2 className="text-sm font-semibold mb-2 text-gray-800">
-                Month's Birthdays
+              <h2 className="text-sm mb-2 text-gray-800">
+                Month&apos;s Birthdays
               </h2>
-              <p className="text-2xl">4</p>
+              <p className="text-3xl">4</p>
             </div>
           </div>
         </div>

@@ -1,28 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { FaEdit, FaTrash, FaSearch, FaPlus } from "react-icons/fa";
+import { FaEdit, FaTrash, FaSearch } from "react-icons/fa";
 import Layout from "@/components/Layout";
+import membersData from "@/data/members.json"; // Adjust path as needed
 
 const Members = () => {
   const router = useRouter();
-  const [membersData, setMembersData] = useState([
-    { id: 1, name: "John Doe", generationalGroupName: "Junior Youth" },
-    { id: 2, name: "Jane Smith", generationalGroupName: "Women's Fellowship" },
-    { id: 3, name: "Michael Johnson", generationalGroupName: "Children's Session" },
-  ]);
+  const [membersDataState, setMembersDataState] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [membersPerPage, setMembersPerPage] = useState(5);
+  const [membersPerPage, setMembersPerPage] = useState(10);
+
+  useEffect(() => {
+    // Simulating data fetching
+    setMembersDataState(membersData);
+  }, []);
 
   const handleDelete = (id) => {
-    const updatedMembers = membersData.filter((member) => member.id !== id);
-    setMembersData(updatedMembers);
+    const updatedMembers = membersDataState.filter((member) => member.id !== id);
+    setMembersDataState(updatedMembers);
   };
 
-  const filteredMembers = membersData.filter((member) =>
-    member.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredMembers = membersDataState.filter((member) => {
+    // Ensure member fields are defined and valid
+    const surname = member.surname || "";
+    const otherNames = member.otherNames || "";
+    const fullName = `${surname} ${otherNames}`.trim();
+    
+    console.log(`Filtering by: ${fullName}`); // Debug: Check the name being used for filtering
+    
+    return fullName.toLowerCase().includes(searchQuery.toLowerCase());
+  });
 
   const indexOfLastMember = currentPage * membersPerPage;
   const indexOfFirstMember = indexOfLastMember - membersPerPage;
@@ -50,16 +59,15 @@ const Members = () => {
   return (
     <Layout>
       <div className="flex max-w-5xl mx-auto mb-4">
-        <div className="bg-white p-2 rounded-lg shadow-md hover:bg-green-300 hover:font-bold mr-4">
+        <div className="bg-white p-4 rounded-lg shadow-md hover:bg-green-300 hover:font-bold mr-4">
           <h2 className="text-sm font-semibold mb-2 text-gray-800">
-            Total Members
+            All Members
           </h2>
-          <p className="text-2xl">{membersData.length}</p>
+          <p className="text-2xl">{membersDataState.length}</p>
         </div>
       </div>
 
       <div className="bg-white p-2 max-w-5xl mx-auto">
-
         <h1 className="font-bold mb-4">
           Members List
           <hr />
@@ -87,9 +95,9 @@ const Members = () => {
                 onChange={handleItemsPerPageChange}
                 className="py-1 px-2 bg-gray-300 text-sm rounded"
               >
-                <option value={5}>5</option>
                 <option value={10}>10</option>
                 <option value={20}>20</option>
+                <option value={50}>50</option>
               </select>
             </div>
             <ul className="flex">
@@ -139,39 +147,47 @@ const Members = () => {
             />
           </div>
         )}
-        <table className="w-full border-collapse border border-gray-300 bg-gray-100 mt-4">
-          <thead>
-            <tr className="bg-gray-200">
-              <th className="py-1 px-1 text-sm text-left"></th>
-              <th className="py-2 px-2 text-sm text-left">Name</th>
-              <th className="py-2 px-2 text-sm text-left">Gen. Group</th>
-              <th className="py-2 px-2 text-sm text-right">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentMembers.map((member, index) => (
-              <tr key={member.id}>
-                <td className="py-1 px-1 text-gray-400 text-sm">{indexOfFirstMember + index + 1}</td>
-                <td className="py-1 px-2">{member.name}</td>
-                <td className="py-1 px-2">{member.generationalGroupName}</td>
-                <td className="py-1 px-2 flex justify-end">
-                  <button
-                    onClick={() => router.push(`/members/${member.id}`)}
-                    className="bg-transparent hover:bg-gray-100 text-gray-500 hover:text-gray-700 px-2 rounded"
-                  >
-                    <FaEdit />
-                  </button>
-                  <button
-                    onClick={() => handleDelete(member.id)}
-                    className="text-red-600 hover:text-red-800 ml-2"
-                  >
-                    <FaTrash />
-                  </button>
-                </td>
+        {filteredMembers.length === 0 ? (
+          <p className="text-center text-gray-600 py-4">No members found.</p>
+        ) : (
+          <table className="w-full border-collapse border border-gray-300 bg-gray-100 mt-4">
+            <thead>
+              <tr className="bg-gray-200">
+                <th className="py-1 px-1 text-sm text-left"></th>
+                <th className="py-2 px-2 text-sm text-left">Name</th>
+                <th className="py-2 px-2 text-sm text-left">Gen. Group</th>
+                <th className="py-2 px-2 text-sm text-right">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {currentMembers.map((member, index) => (
+                <tr key={member.id}>
+                  <td className="py-1 px-1 text-gray-400 text-sm">{indexOfFirstMember + index + 1}</td>
+                  <td className="py-1 px-2">
+                    {`${member.surname || ""} ${member.otherNames || ""}`.trim()}
+                  </td>
+                  <td className="py-1 px-2">{member.generationalGroupName}</td>
+                  <td className="py-1 px-2 flex justify-end">
+                    <button
+                      onClick={() => router.push(`/members/${member.id}`)}
+                      className="bg-transparent hover:bg-gray-100 text-gray-500 hover:text-gray-700 px-2 rounded"
+                      aria-label={`Edit ${member.surname} ${member.otherNames}`}
+                    >
+                      <FaEdit />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(member.id)}
+                      className="text-red-600 hover:text-red-800 ml-2"
+                      aria-label={`Delete ${member.surname} ${member.otherNames}`}
+                    >
+                      <FaTrash />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </Layout>
   );

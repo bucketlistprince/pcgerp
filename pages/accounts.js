@@ -32,17 +32,17 @@ const Accounts = () => {
     <Layout>
       <div className="max-w-5xl mx-auto">
         <div className="flex mb-4">
-          <div className="bg-white p-2 rounded-lg shadow-md hover:bg-green-300 hover:font-bold mr-4">
+          <div className="bg-white p-4 rounded-lg shadow-md hover:bg-green-300 hover:font-bold mr-4">
             <h2 className="text-sm font-semibold mb-2 text-gray-800">
               Offertory
             </h2>
             <p className="text-2xl">GH¢ 1203.50</p>
           </div>
-          <div className="bg-white p-2 rounded-lg shadow-md hover:bg-green-300 hover:font-bold mr-4 ">
+          <div className="bg-white p-4 rounded-lg shadow-md hover:bg-green-300 hover:font-bold mr-4 ">
             <h2 className="text-sm font-semibold mb-2 text-gray-800">Tithe</h2>
             <p className="text-2xl">GH¢ 7540.00</p>
           </div>
-          <div className="bg-white p-2 rounded-lg shadow-md hover:bg-green-300 hover:font-bold">
+          <div className="bg-white p-4 rounded-lg shadow-md hover:bg-green-300 hover:font-bold">
             <h2 className="text-sm font-semibold mb-2 text-gray-800">
               Welfare
             </h2>

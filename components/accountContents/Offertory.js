@@ -118,9 +118,9 @@ const Offertory = () => {
                 }
                 className="py-1 px-2 bg-gray-300 text-sm rounded"
               >
-                <option value={5}>5</option>
                 <option value={10}>10</option>
-                <option value={100}>100</option>
+                <option value={20}>20</option>
+                <option value={50}>50</option>
               </select>
             </div>
             <ul className="flex">

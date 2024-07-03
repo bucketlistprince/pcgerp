@@ -1,0 +1,108 @@
+/* components/BigCalendarComponent.module.css */
+
+/* General Calendar Styling */
+.custom-calendar .rbc-calendar {
+  background-color: #f9f9f9; /* Light background color for the calendar */
+}
+
+.custom-calendar .rbc-header {
+  background-color: #acc5e2; /* Header background color */
+  color: #ffffff; /* Header text color */
+  font-weight: bold; /* Make header text bold */
+  font-size: 0.85rem; /* Reduced font size for headers */
+}
+
+.custom-calendar .rbc-day-bg {
+  background-color: #ffffff; /* Background color for day cells */
+  border-radius: 4px; /* Rounded corners for day cells */
+}
+
+.custom-calendar .rbc-day-bg:hover {
+  background-color: #e0e0e0; /* Light hover effect on day cells */
+  cursor: pointer; /* Show pointer cursor on hover */
+}
+
+/* Event Styling */
+.custom-calendar .rbc-event {
+  background-color: #ff6347; /* Default event background color */
+  color: white; /* Default event text color */
+  border-radius: 4px; /* Rounded corners for events */
+  font-size: 0.75rem; /* Smaller font size for events */
+  padding: 0.2rem; /* Padding around event text */
+  display: flex; /* Ensure event content is properly aligned */
+  align-items: center; /* Center text vertically */
+  justify-content: center; /* Center text horizontally */
+}
+
+.custom-calendar .rbc-event.rbc-selected {
+  background-color: #ff4500; /* Background color when selected */
+  color: white; /* Ensure text color remains readable */
+}
+
+/* Specific styling for event content */
+.custom-calendar .rbc-event-content {
+  font-size: 0.75rem; /* Font size for event content */
+  padding: 0.2rem; /* Padding inside event content */
+}
+
+/* Month View Specific Styling */
+.custom-calendar .rbc-month-view {
+  border: 1px solid #e2e2e2; /* Border around the calendar */
+}
+
+.custom-calendar .rbc-month-header {
+  font-weight: bold; /* Bold month header text */
+}
+
+/* Button Group Styling */
+.custom-calendar .rbc-btn-group {
+  margin-top: 0rem; /* Margin for button group to adjust position */
+}
+
+.custom-calendar .rbc-btn-group button {
+  font-size: 1rem; /* Adjust font size for visibility */
+  padding: 0.5rem; /* Adjust padding for better clickability */
+  border-radius: 4px; /* Rounded corners for navigation buttons */
+  display: inline-flex; /* Center the icon */
+  align-items: center; /* Center the icon vertically */
+  justify-content: center; /* Center the icon horizontally */
+  background-color: #e7e4e4; /* Background color for buttons */
+  color: rgb(0, 0, 0); /* Color for icons */
+  border: none; /* Remove border */
+}
+
+.custom-calendar .rbc-btn-group button:hover {
+  background-color: #8decc6; /* Darker background on hover */
+  color: rgb(0, 0, 0);
+}
+
+/* Toolbar Styling */
+.custom-calendar .rbc-toolbar-label {
+  font-size: 0.875rem; /* Equivalent to text-sm in Tailwind CSS */
+  font-weight: 500; /* Equivalent to font-medium in Tailwind CSS */
+}
+
+.custom-calendar .rbc-toolbar button {
+  font-size: 0.75rem; /* Adjust button text size if needed */
+}
+
+.today-btn {
+  font-size: 0.75rem; /* Appropriate font size for "Today" button */
+}
+
+/* Agenda View Specific Styling */
+.custom-calendar .rbc-agenda-view {
+  font-size: 0.875rem; /* Adjust this to your desired font size */
+}
+
+.custom-calendar .rbc-agenda-date {
+  font-size: 0.75rem; /* Smaller font size for date in agenda view */
+}
+
+.custom-calendar .rbc-agenda-time {
+  font-size: 0.75rem; /* Smaller font size for time in agenda view */
+}
+
+.custom-calendar .rbc-agenda-event {
+  font-size: 0.875rem; /* Adjust this to your desired font size */
+}

@@ -1,5 +1,5 @@
 const Others = () => {
-    return <div>Other Contents</div>
+    return <div>Other Contributions</div>
 };
 
 export default Others;

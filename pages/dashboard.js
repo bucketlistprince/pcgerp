@@ -1,12 +1,13 @@
 import Layout from "../components/Layout";
-import BigCalendarComponent from "../components/BigCalendarComponent";
-import Link from "next/link";
+import BigCalendar from "../components/BigCalendar";
 import { useRouter } from "next/router";
 
 const Dashboard = () => {
   const upcomingBirthdays = [
-    { name: "John Doe", date: "2024-06-20" },
-    { name: "Jane Smith", date: "2024-06-25" },
+    { name: "John Doe", date: "2024-07-20" },
+    { name: "Jane Smith", date: "2024-07-9" },
+    { name: "Jerry Allen", date: "2024-07-20" },
+    { name: "Barry Tims", date: "2024-07-25" },
   ];
 
   const router = useRouter();
@@ -14,34 +15,26 @@ const Dashboard = () => {
   return (
     <Layout>
       <div className="max-w-5xl mx-auto">
-        <div className="flex justify-between">
-          <div className="flex">
-            <div
-              className="bg-white p-2 rounded-lg shadow-md hover:bg-green-300 hover:font-bold mr-4"
-              onClick={() => router.push("/members")}
-            >
-              <h2 className="text-sm font-semibold mb-2 text-gray-800">
-                Week's Birthdays
-              </h2>
-              <p className="text-2xl">15</p>
-            </div>
-            <div className="bg-white p-2 rounded-lg shadow-md hover:bg-green-300 hover:font-bold mr-4">
+        <div className="flex justify-between mb-4">
+          <div className="flex flex-wrap gap-4">
+
+            <div className="bg-white p-4 rounded-lg shadow-md hover:bg-green-300 hover:font-bold transition-all">
               <h2 className="text-sm font-semibold mb-2 text-gray-800">
                 Today's Birthdays
               </h2>
-              <p className="text-2xl">2</p>
+              <p className="text-2xl">0</p>
             </div>
-          </div>
-          <div className="bg-white p-2 rounded-lg shadow-md hover:bg-green-300 hover:font-bold">
-            <h2 className="text-sm font-semibold mb-2 text-gray-800">
-              Month's Birthdays
-            </h2>
-            <p className="text-2xl">2</p>
+            <div className="bg-white p-4 rounded-lg shadow-md hover:bg-green-300 hover:font-bold transition-all">
+              <h2 className="text-sm font-semibold mb-2 text-gray-800">
+                Month's Birthdays
+              </h2>
+              <p className="text-2xl">4</p>
+            </div>
           </div>
         </div>
 
-        <div className="rounded-lg shadow-md mt-4 bg-white w-full">
-          <BigCalendarComponent birthdays={upcomingBirthdays} />
+        <div className="text-sm rounded-lg shadow-md bg-white w-full">
+          <BigCalendar birthdays={upcomingBirthdays} />
         </div>
       </div>
     </Layout>
